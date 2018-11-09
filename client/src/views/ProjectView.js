@@ -14,7 +14,7 @@ class ProjectView extends React.Component {
   componentDidMount(){
     const id = this.props.match.params.id;
     axios
-      .get(`http://localhost:9000/projects/${id}`)
+      .get(`/projects/${id}`)
       .then(response => {
         this.setState({
           project: response.data,
@@ -26,7 +26,7 @@ class ProjectView extends React.Component {
 
   updateProject = (id, updatedProject) => {
     axios
-      .put(`http://localhost:9000/projects/${id}`, updatedProject)
+      .put(`/projects/${id}`, updatedProject)
       .then(response => {
         this.setState({
           project: response.data,
@@ -37,7 +37,7 @@ class ProjectView extends React.Component {
 
   addAction = newAction => {
     axios
-      .post(`http://localhost:9000/actions`, newAction)
+      .post(`/actions`, newAction)
       .then(response => {
         const newActions = [...this.state.project.actions, response.data];
         this.setState({
@@ -49,7 +49,7 @@ class ProjectView extends React.Component {
 
   editAction = (id, updatedAction) => {
      axios
-      .put(`http://localhost:9000/actions/${id}`, updatedAction)
+      .put(`/actions/${id}`, updatedAction)
       .then(response => {
         let updatedActions = this.state.actions.map(action => {
           if (action.id === id) {
@@ -66,7 +66,7 @@ class ProjectView extends React.Component {
 
   deleteAction = id => {
     axios
-      .delete(`http://localhost:9000/actions/${id}`)
+      .delete(`/actions/${id}`)
       .then(response => {
         let deletedActionList = this.state.project.actions.filter(action => action.id !== id);
         this.setState({

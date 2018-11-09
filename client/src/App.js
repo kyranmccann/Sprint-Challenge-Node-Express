@@ -15,7 +15,7 @@ class App extends Component {
   }
   componentDidMount() {
     axios
-      .get('http://localhost:9000/projects')
+      .get('/projects')
       .then(response => {
         this.setState({
         projects: response.data,
@@ -26,7 +26,7 @@ class App extends Component {
 
   addNewProject = newProject => {
     axios
-      .post('http://localhost:9000/projects', newProject)
+      .post('/projects', newProject)
       .then(response => {
         this.setState({
           projects: [...this.state.projects, response.data]
@@ -37,7 +37,7 @@ class App extends Component {
 
   deleteProject = id => {
     axios
-      .delete(`http://localhost:9000/projects/${id}`)
+      .delete(`/projects/${id}`)
       .then(response => {
         let deleteList = this.state.projects.filter(project => project.id !== id);
         this.setState({
