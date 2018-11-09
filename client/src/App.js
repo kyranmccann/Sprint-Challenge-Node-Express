@@ -39,9 +39,9 @@ class App extends Component {
     axios
       .delete(`http://localhost:9000/projects/${id}`)
       .then(response => {
-        let deleteList = this.state.projects.filter(project => project.id != id);
+        let deleteList = this.state.projects.filter(project => project.id !== id);
         this.setState({
-          projects: deleteList, 
+          projects: deleteList,
         })
       })
       .catch(err => console.log(err));

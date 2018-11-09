@@ -2,6 +2,7 @@ import React from 'react';
 import ActionsList from './ActionsList';
 import ProjectForm from './ProjectForm';
 
+
 class Project extends React.Component {
   constructor(props){
     super(props);
@@ -43,7 +44,11 @@ class Project extends React.Component {
       />}
       <h2>{this.props.project.name}</h2>
       <p>{this.props.project.description}</p>
-      {this.props.project.actions && <ActionsList actions={this.props.project.actions}/>}
+      {this.props.project.actions && <ActionsList
+        addAction={this.props.addAction}
+        deleteAction={this.props.deleteAction}
+        editAction={this.props.editAction} actions={this.props.project.actions}
+        projectId={this.props.project.id}/>}
       </div>
     )
   }

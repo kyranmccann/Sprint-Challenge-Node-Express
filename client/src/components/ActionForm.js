@@ -19,6 +19,10 @@ class ActionForm extends React.Component{
         notes: this.props.action.notes,
         description: this.props.action.description,
       })
+    } else {
+      this.setState({
+        project_id: this.props.id,
+      })
     }
   }
 
@@ -28,25 +32,46 @@ class ActionForm extends React.Component{
     })
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    if (this.props.action){
+      const updatedAction = {
+        ...this.state
+      }
+      console.log('in action form', updatedAction)
+      this.props.submit(this.state.id, updatedAction)
+      this.props.doneEditing();
+    }
+    else {
+      const newAction = {
+        project_id: this.state.project_id,
+        description: this.state.description,
+        notes: this.state.notes,
+      }
+      this.props.submit(newAction);
+      this.props.toggleHelper();
+    }
+  }
+
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
         <input
           type='text'
-          name='name'
+          name='description'
           value={this.state.description}
           onChange={this.handleInput}
-          placeholder='project name'
+          placeholder='action description'
         />
         <input
           type='textarea'
-          name='description'
+          name='notes'
           value={this.state.notes}
           onChange={this.handleInput}
-          placeholder='project description'
+          placeholder='action notes'
         />
         <button type='submit'>
-          {this.props.project ? 'Add Action' : 'Save Changes'}
+          {!this.props.action ? 'Add Action' : 'Save Changes'}
         </button>
       </form>
     )
