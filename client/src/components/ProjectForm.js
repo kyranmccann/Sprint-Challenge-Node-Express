@@ -32,15 +32,19 @@ class ProjectForm extends React.Component{
       const updatedProject = {
         ...this.state
       }
-      this.props.submit(this.state.id, updatedProject)
+      console.log(updatedProject)
+      this.props.submit(this.state.id, updatedProject);
+      this.props.doneEditing(); 
+    } else {
+      console.log('adding in form')
+      const newProject = {
+        name: this.state.name,
+        description: this.state.description,
+      }
+      this.props.submit(newProject);
+      this.props.history.push('/');
     }
-    console.log('adding in form')
-    const newProject = {
-      name: this.state.name,
-      description: this.state.description,
-    }
-    this.props.submit(newProject);
-    this.props.history.push('/'); 
+
   }
 
   render(){

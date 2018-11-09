@@ -24,12 +24,23 @@ class ProjectView extends React.Component {
       .catch(err => console.log(err));
   }
 
+  updateProject = (id, updatedProject) => {
+    axios
+      .put(`http://localhost:9000/projects/${id}`, updatedProject)
+      .then(response => {
+        this.setState({
+          project: response.data,
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   render(){
     if (this.state.fetchingProject){
       return (<h2>Getting project...</h2>)
     }
     return (
-      <Project project={this.state.project} />
+      <Project project={this.state.project} submit={this.updateProject} history={this.props.history}/>
     )
   }
 }
