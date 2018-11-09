@@ -15,8 +15,8 @@ const actionRoute = require('./routes/actionRoute');
 server.use('/projects', projectRoute);
 server.use('/actions', actionRoute);
 
-server.get('', (req, res) => {
-  res.json({ message: "the server is alive!"})
-})
+// server.get('', (req, res) => {
+//   res.json({ message: "the server is alive!"})
+// })
 
 module.exports = server;
