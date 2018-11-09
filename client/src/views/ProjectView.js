@@ -7,11 +7,11 @@ class ProjectView extends React.Component {
     super();
     this.state = {
       project: [],
+      projectId: null,
       fetchingProject: true,
     }
   }
-
-  componentDidMount(){
+  getProject = () => {
     const id = this.props.match.params.id;
     axios
       .get(`/projects/${id}`)
@@ -23,6 +23,15 @@ class ProjectView extends React.Component {
       })
       .catch(err => console.log(err));
   }
+  componentDidMount(){
+    this.getProject();
+  }
+
+  componentDidUpdate(prevProps){
+    if (this.props.match.params.id !== prevProps.match.params.id){
+      this.getProject();
+    }
+  }
 
   updateProject = (id, updatedProject) => {
     axios
@@ -33,6 +42,7 @@ class ProjectView extends React.Component {
         })
       })
       .catch(err => console.log(err))
+      this.props.updateList(updatedProject); 
   }
 
   addAction = newAction => {
@@ -51,9 +61,9 @@ class ProjectView extends React.Component {
      axios
       .put(`/actions/${id}`, updatedAction)
       .then(response => {
-        let updatedActions = this.state.actions.map(action => {
+        let updatedActions = this.state.project.actions.map(action => {
           if (action.id === id) {
-            action = response.data
+             action = response.data
           }
           return action;
         })

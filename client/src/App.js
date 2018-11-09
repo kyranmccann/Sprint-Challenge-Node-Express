@@ -47,6 +47,18 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  updateList = updatedProject => {
+    let updatedProjectList = this.state.projects.map(project => {
+      if (project.id === updatedProject.id){
+        project = updatedProject
+      }
+      return project;
+    });
+    this.setState({
+      projects: updatedProjectList,
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -54,7 +66,8 @@ class App extends Component {
         <Route exact path='/' component={Welcome} />
         <Switch>
           <Route path='/add' render={(props) => <ProjectForm {...props} submit={this.addNewProject}/>} />
-          <Route path='/:id' render={(props) => <ProjectView {...props} deleteProject={this.deleteProject}/> }/>
+          <Route path='/:id' render={(props) => <ProjectView {...props}
+            updateList={this.updateList} deleteProject={this.deleteProject}/> }/>
         </Switch>
 
       </div>
