@@ -38,7 +38,6 @@ class ActionForm extends React.Component{
       const updatedAction = {
         ...this.state
       }
-      console.log('in action form', updatedAction)
       this.props.submit(this.state.id, updatedAction)
       this.props.doneEditing();
     }
