@@ -40,7 +40,8 @@ class ProjectView extends React.Component {
       return (<h2>Getting project...</h2>)
     }
     return (
-      <Project project={this.state.project} submit={this.updateProject} history={this.props.history}/>
+      <Project project={this.state.project} submit={this.updateProject} history={this.props.history}
+      delete={this.props.deleteProject}/>
     )
   }
 }

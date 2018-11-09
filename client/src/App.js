@@ -35,6 +35,18 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
+  deleteProject = id => {
+    axios
+      .delete(`http://localhost:9000/projects/${id}`)
+      .then(response => {
+        let deleteList = this.state.projects.filter(project => project.id != id);
+        this.setState({
+          projects: deleteList, 
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +54,7 @@ class App extends Component {
         <Route exact path='/' component={Welcome} />
         <Switch>
           <Route path='/add' render={(props) => <ProjectForm {...props} submit={this.addNewProject}/>} />
-          <Route path='/:id' render={(props) => <ProjectView {...props}v/> }/>
+          <Route path='/:id' render={(props) => <ProjectView {...props} deleteProject={this.deleteProject}/> }/>
         </Switch>
 
       </div>

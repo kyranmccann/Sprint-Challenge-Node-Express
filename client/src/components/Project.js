@@ -22,11 +22,16 @@ class Project extends React.Component {
     })
   }
 
+  deleteHelper = () => {
+    this.props.delete(this.props.project.id);
+    this.props.history.push('/');
+  }
+
   render(){
     return (
       <div className='project'>
       <div className='buttons'>
-      <div className='icon-button delete-button'>
+      <div className='icon-button delete-button' onClick={this.deleteHelper}>
         Delete Project
       </div>
       <div className='icon-button edit-button' onClick={this.toggleEdit}>
