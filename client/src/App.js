@@ -1,14 +1,50 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import axios from 'axios';
+import { Route, Switch } from 'react-router-dom';
 import { ProjectListView, ProjectView } from './views';
+import { Welcome, ProjectForm } from './components';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      projects: [],
+      fetchingProjects: true,
+    }
+  }
+  componentDidMount() {
+    axios
+      .get('http://localhost:9000/projects')
+      .then(response => {
+        this.setState({
+        projects: response.data,
+        fetchingProjects: false,
+      })
+    })
+  }
+
+  addNewProject = newProject => {
+    axios
+      .post('http://localhost:9000/projects', newProject)
+      .then(response => {
+        this.setState({
+          projects: [...this.state.projects, response.data]
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div className="App">
-        <Route exact path='/' component={ProjectListView}/>
-        <Route path='/:id' render={(props) => <ProjectView {...props}v/> }/>
+        <Route path='/' render={(props) => <ProjectListView {...props} projects={this.state.projects}/>}/>
+        <Route exact path='/' component={Welcome} />
+        <Switch>
+          <Route path='/add' render={(props) => <ProjectForm {...props} submit={this.addNewProject}/>} />
+          <Route path='/:id' render={(props) => <ProjectView {...props}v/> }/>
+        </Switch>
+
       </div>
     );
   }

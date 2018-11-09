@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProjectList = props => {
   return (
     <div className='project-list'>
-    <h1>ProjectList</h1>
+    <h3>ProjectList</h3>
     {props.projects.map(project => {
       return (
         <Link to={`/${project.id}`} key={project.id}>

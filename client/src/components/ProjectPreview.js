@@ -2,7 +2,9 @@ import React from 'react';
 
 const ProjectPreview = props => {
   return (
-    <h2>{props.project.name}</h2>
+    <div className='project-preview'>
+    <p>{props.project.name}</p>
+    </div>
   )
 }
 
