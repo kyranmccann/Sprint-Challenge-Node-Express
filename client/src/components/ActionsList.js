@@ -39,14 +39,15 @@ class ActionsList extends React.Component {
   return(
     <div className='actions-list'>
     <h5>Project Actions</h5>
-    <div onClick={this.toggleAdd} className='icon-button add-button'>
-    Add Action
-    </div>
-    {this.state.isAdding && <ActionForm submit={this.props.addAction} id={this.props.projectId} toggleHelper={this.doneAdding}/>}
+
     {this.props.actions.map(action => {
       return <Action key={action.id} action={action} editAction={this.props.editAction}
       deleteAction={this.props.deleteAction}/>
     })}
+    <div onClick={this.toggleAdd} className='icon-button add-button'>
+    Add Action
+    </div>
+    {this.state.isAdding && <ActionForm submit={this.props.addAction} id={this.props.projectId} toggleHelper={this.doneAdding}/>}
     </div>
   )}
 }

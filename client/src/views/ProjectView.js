@@ -42,7 +42,7 @@ class ProjectView extends React.Component {
         })
       })
       .catch(err => console.log(err))
-      this.props.updateList(updatedProject); 
+      this.props.updateList(updatedProject);
   }
 
   addAction = newAction => {
@@ -87,7 +87,7 @@ class ProjectView extends React.Component {
   }
   render(){
     if (this.state.fetchingProject){
-      return (<h2>Getting project...</h2>)
+      return (<div className='loading'><h3>Getting project...</h3></div>)
     }
     return (
       <Project project={this.state.project} submit={this.updateProject} history={this.props.history}

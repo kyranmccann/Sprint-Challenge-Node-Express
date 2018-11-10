@@ -1,4 +1,5 @@
 import React from 'react';
+import FeatherIcon from 'feather-icons-react';
 
 class ActionForm extends React.Component{
   constructor(props){
@@ -51,28 +52,43 @@ class ActionForm extends React.Component{
       this.props.toggleHelper();
     }
   }
+  close(){
+    if (this.props.action){
+      this.props.doneEditing();
+    } else {
+      this.props.toggleHelper();
+    }
 
+  }
   render(){
+    let classes = 'action-form ';
+    if(this.props.action){
+      classes += 'editing'
+    }
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type='text'
-          name='description'
-          value={this.state.description}
-          onChange={this.handleInput}
-          placeholder='action description'
-        />
-        <input
-          type='textarea'
-          name='notes'
-          value={this.state.notes}
-          onChange={this.handleInput}
-          placeholder='action notes'
-        />
-        <button type='submit'>
-          {!this.props.action ? 'Add Action' : 'Save Changes'}
-        </button>
-      </form>
+      <div className={classes}>
+        <form onSubmit={this.handleSubmit}>
+          <FeatherIcon className='icon-button close-button' onClick={() => {this.close()}}icon='x' size='20'/>
+          <h3>{this.props.action ? 'Edit Action' : 'Add an Action'}</h3>
+          <input
+            type='text'
+            name='description'
+            value={this.state.description}
+            onChange={this.handleInput}
+            placeholder='action description'
+          />
+        <textarea
+            type='textarea'
+            name='notes'
+            value={this.state.notes}
+            onChange={this.handleInput}
+            placeholder='action notes'
+          />
+          <button type='submit'>
+            {!this.props.action ? 'Add Action' : 'Save Changes'}
+          </button>
+        </form>
+      </div>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionForm from './ActionForm';
+import FeatherIcon from 'feather-icons-react';
 
 
 class Action extends React.Component {
@@ -30,12 +31,12 @@ class Action extends React.Component {
   render(){
     return (
       <div className='action' >
-        <div className='icon-buttons'>
-          <div onClick={() => {this.deleteHelper()}} className='button delete-button'>
-            Delete Action
+        <div className='buttons'>
+          <div onClick={() => {this.deleteHelper()}} className='icon-button delete-button'>
+            <FeatherIcon icon='trash' size='15'/>
           </div>
-          <div onClick={this.toggleEdit}className='button edit-button'>
-            Edit Action
+          <div onClick={this.toggleEdit}className='icon-button edit-button'>
+            <FeatherIcon icon='edit' size='15' />
           </div>
         </div>
         <p>{this.props.action.description}</p>

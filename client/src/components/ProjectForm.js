@@ -1,4 +1,5 @@
 import React from 'react';
+import FeatherIcon from 'feather-icons-react';
 
 class ProjectForm extends React.Component{
   constructor(props){
@@ -42,20 +43,31 @@ class ProjectForm extends React.Component{
       this.props.submit(newProject);
       this.props.history.push('/');
     }
+  }
 
+  close = () => {
+    if (this.props.project){
+      this.props.doneEditing();
+    } else {
+      this.props.history.goBack();
+    }
   }
 
   render(){
     return (
+      <div className='project-form'>
       <form onSubmit={this.handleSubmit}>
+        <FeatherIcon className='icon-button close-button' onClick={() => {this.close()}}icon='x' size='20'/>
+        <h2>{this.props.project ? 'Edit Project' : 'Add a Project'}</h2>
         <input
           type='text'
           name='name'
+          maxLength='128'
           value={this.state.name}
           onChange={this.handleInput}
           placeholder='project name'
         />
-        <input
+      <textarea
           type='textarea'
           name='description'
           value={this.state.description}
@@ -66,6 +78,7 @@ class ProjectForm extends React.Component{
           {!this.props.project ? 'Add Project' : 'Save Changes'}
         </button>
       </form>
+      </div>
     )
   }
 }

@@ -5,6 +5,7 @@
   "proxy": "http://localhost:9000",
   "dependencies": {
     "axios": "^0.18.0",
+    "feather-icons-react": "^0.3.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-router-dom": "^4.3.1",
