@@ -83,11 +83,11 @@ a {
   opacity: .97;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .App .project-form {
     height: 300vh;
   }
-}
+  } */
 
 .App .project-form form {
   color: #2f2f2f;
@@ -108,7 +108,7 @@ a {
   padding: 10px;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .App .project-form form {
     min-width: 200px;
     max-width: 300px;
@@ -117,7 +117,7 @@ a {
     top: 15%;
     left: 5%;
   }
-}
+} */
 .App .project-form input {
   border-radius: 3px;
   width: 100%;
@@ -293,8 +293,8 @@ button:hover {
 }
 
 .actions-list .add-button {
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background: tomato;
   display: flex;
@@ -319,7 +319,7 @@ button:hover {
   padding: 20px;
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .action-form {
     padding: 20px 5px;
     height: 100%;
@@ -327,7 +327,7 @@ button:hover {
     height: 300vh;
     top: 370px;
   }
-}
+} */
 .action-form form h3 {
   color: #2f2f2f;
 }
