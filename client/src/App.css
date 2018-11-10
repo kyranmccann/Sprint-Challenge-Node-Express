@@ -108,16 +108,12 @@ a {
   padding: 10px;
 }
 
-/* @media (max-width: 500px) {
+@media (max-width: 500px) {
   .App .project-form form {
-    min-width: 200px;
-    max-width: 300px;
-    width: 90%;
-    position: absolute;
-    top: 15%;
-    left: 5%;
+    width: 70vw;
+    left: 15vw;
   }
-} */
+}
 .App .project-form input {
   border-radius: 3px;
   width: 100%;
@@ -344,6 +340,14 @@ button:hover {
   align-items: center;
   justify-content: space-around;
   padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .action-form form {
+    width: 70vw;
+    left: 15vw;
+    top: 50vw;  
+  }
 }
 .action-form input {
   border-radius: 3px;
