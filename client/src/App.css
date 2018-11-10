@@ -112,6 +112,7 @@ a {
   .App .project-form form {
     width: 70vw;
     left: 15vw;
+    top: 120px;
   }
 }
 .App .project-form input {
@@ -315,15 +316,11 @@ button:hover {
   padding: 20px;
 }
 
-/* @media (max-width: 500px) {
+@media (max-width: 500px) {
   .action-form {
-    padding: 20px 5px;
-    height: 100%;
-    position: absolute;
     height: 300vh;
-    top: 370px;
   }
-} */
+}
 .action-form form h3 {
   color: #2f2f2f;
 }
@@ -345,8 +342,9 @@ button:hover {
 @media (max-width: 500px) {
   .action-form form {
     width: 70vw;
+    position: absolute;
     left: 15vw;
-    top: 50vw;  
+    top: 70vw;
   }
 }
 .action-form input {

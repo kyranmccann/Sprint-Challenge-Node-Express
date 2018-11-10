@@ -45,7 +45,7 @@ class ActionsList extends React.Component {
       deleteAction={this.props.deleteAction}/>
     })}
     <div onClick={this.toggleAdd} className='icon-button add-button'>
-    Add Action
+    Add <br/> Action
     </div>
     {this.state.isAdding && <ActionForm submit={this.props.addAction} id={this.props.projectId} toggleHelper={this.doneAdding}/>}
     </div>
